@@ -115,6 +115,8 @@ export default {
         if (result.data != "") {
           localStorage.setItem("user", JSON.stringify(result.data));
           location.reload();
+          
+          this.$router.push("/home");
         } else {
           alert("Verifique os campos.");
         }

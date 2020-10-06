@@ -17,9 +17,15 @@ public class UserDAO {
 	}
 
 	private static void initUsers() {
-		User user1 = new User(1, "almada", "123");
-		User user2 = new User(2, "anderson", "456");
-		User user3 = new User(3, "alex", "789");
+		User user1 = new User(1, "gabi@gmail.com", "12345678", "12345678", "Gabi", "Alves", "11/04/1999", "Feminino",
+				"888888", "8888888", "88888888888", "Rua", "888888", "88", "complemento", "referencia", "bairro",
+				"cidade", "estado");
+		User user2 = new User(2, "gabi@gmail.com", "12345678", "12345678", "Gabi", "Alves", "11/04/1999", "Feminino",
+				"888888", "8888888", "88888888888", "Rua", "888888", "88", "complemento", "referencia", "bairro",
+				"cidade", "estado");
+		User user3 = new User(3, "gabi@gmail.com", "12345678", "12345678", "Gabi", "Alves", "11/04/1999", "Feminino",
+				"888888", "8888888", "88888888888", "Rua", "888888", "88", "complemento", "referencia", "bairro",
+				"cidade", "estado");
 
 		userMap.put(user1.getId(), user1);
 		userMap.put(user2.getId(), user2);
@@ -42,26 +48,23 @@ public class UserDAO {
 		return null;
 	}
 
-	public static User getUserByEmailAndSenha(String email, String senha) {
-		List<User> list = getAllUsers();
+	public static User addUser(String email, String senha, String confirSenha, String nome, String sobrenome,
+			String data, String sexo, String celular, String telefone, String cnpj, String rua, String cep,
+			String numero, String complemento, String referencia, String bairro, String cidade, String estado) {
 
-		for (User user : list) {
-			if (user.getEmail().equals(email) && user.getSenha().equals(senha)) {
-				return user;
-			}
-		}
-
-		return null;
-	}
-	public static User addUser(String email, String senha) {
-		User user = new User(i, email, senha);
+		User user = new User(i, email, senha, confirSenha, nome, sobrenome, data, sexo, celular, telefone, cnpj, rua,
+				cep, numero, complemento, referencia, bairro, cidade, estado);
 		userMap.put(user.getId(), user);
 		i++;
 		return user;
 	}
 
-	public static User updateUser(int id, String email, String senha) {
-		User user = new User(id, email, senha);
+	public static User updateUser(int id, String email, String senha, String confirSenha, String nome, String sobrenome,
+			String data, String sexo, String celular, String telefone, String cnpj, String rua, String cep,
+			String numero, String complemento, String referencia, String bairro, String cidade, String estado) {
+
+		User user = new User(id, email, senha, confirSenha, nome, sobrenome, data, sexo, celular, telefone, cnpj, rua,
+				cep, numero, complemento, referencia, bairro, cidade, estado);
 		userMap.put(user.getId(), user);
 		return user;
 	}

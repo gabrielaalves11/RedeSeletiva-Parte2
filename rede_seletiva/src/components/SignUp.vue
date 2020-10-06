@@ -139,7 +139,7 @@
                     <div class="form-group col-md-4">
                       <!-- Sexo -->
                       <select class="custom-select" v-model="sexo" required>
-                        <option selected>Selecione o sexo</option>
+                        <option disabled value="">Selecione o sexo</option>
                         <option>Feminino</option>
                         <option>Masculino</option>
                         <option>Outro...</option>
@@ -168,8 +168,6 @@
                         type="text"
                         class="form-control"
                         placeholder="Digite seu telefone fixo"
-                        pattern="\([0-9]{2})\[\s][0-9]{4}-[0-9]{4,5}"
-                        data-mask="(00) 00000-0000"
                         v-model="telefone"
                       />
                     </div>
@@ -285,7 +283,7 @@
                     <div class="form-group col-md-5">
                       <!-- Estado -->
                       <select class="custom-select" v-model="estado" required>
-                        <option selected>UF</option>
+                        <option disabled value="">UF</option>
                         <option value="AC">Acre</option>
                         <option value="AL">Alagoas</option>
                         <option value="AP">Amapá</option>
@@ -325,7 +323,7 @@
                   <button
                     type="submit"
                     class="btn btn-success btn-block"
-                    @click="postSingUp"
+                    @click="postUser"
                   >
                     Cadastrar
                   </button>
@@ -350,9 +348,10 @@
 
 <script>
 export default {
-  name: "SingUp",
+  name: "SignUp",
   data() {
     return {
+      id: 0,
       email: "",
       senha: "",
       confirSenha: "",
@@ -371,16 +370,13 @@ export default {
       bairro: "",
       cidade: "",
       estado: "",
-      baseURI: "http://localhost:8080/rede_seletiva/api/users/singup",
+      user: {},
+      users: [],
+      baseURI: "http://localhost:8080/rede_seletiva/api/users",
     };
   },
-  created: function () {
-    if (localStorage.getItem("user")) {
-      this.$router.replace("/");
-    }
-  },
   methods: {
-    postLogin: function () {
+    postUser: function () {
       let obj = {
         email: this.email,
         senha: this.senha,
@@ -403,17 +399,23 @@ export default {
       };
 
       this.$http.post(this.baseURI, obj).then((result) => {
-        if (result.data != "") {
-          localStorage.setItem("user", JSON.stringify(result.data));
-          location.reload();
-        } else {
-          alert("Verifique os campos.");
-        }
+        console.log(result);
+        this.user = result.data;
       });
     },
     checkForm(event) {
       event.preventDefault();
       event.target.classList.add("was-validated");
+    },
+    confirmPassword() {
+      senha = this.senha;
+      confirmSenha = this.confirSenha;
+
+      if (senha == confirmSenha) {
+        console.log("SENHAS IGUAIS!");
+      } else {
+        alert("SENHAS DIFERENTES!");
+      }
     },
   },
 };

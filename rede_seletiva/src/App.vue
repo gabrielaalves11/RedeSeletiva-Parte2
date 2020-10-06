@@ -7,7 +7,7 @@
 
 <script>
 import Login from "@/components/Login.vue";
-import SingUp from "@/components/SingUp.vue";
+import SignUp from "@/components/SignUp.vue";
 import Recover from "@/components/Recover.vue";
 import Home from "@/components/Home.vue";
 import User from "@/components/User.vue";
@@ -16,7 +16,7 @@ export default {
   name: "App",
   components: {
     Login,
-    SingUp,
+    SignUp,
     Recover,
     Home,
     User

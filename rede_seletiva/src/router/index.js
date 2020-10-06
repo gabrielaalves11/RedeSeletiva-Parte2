@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from "../components/Login.vue"
-import SingUp from "../components/SingUp.vue"
+import SignUp from "../components/SignUp.vue"
 import Recover from "../components/Recover.vue"
 import Home from "../components/Home.vue"
 import User from "../components/User.vue"
@@ -15,9 +15,9 @@ const routes = [
     component: Login,
   },
   {
-    path: "/singup",
-    name: "SingUp",
-    component: SingUp,
+    path: "/signup",
+    name: "SignUp",
+    component: SignUp,
   },
   {
     path: "/recover",

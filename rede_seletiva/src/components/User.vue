@@ -26,7 +26,7 @@
       <li class="nav-item">
         <a class="nav-link" href="editarUser.html">
           <i class="fas fa-edit"></i>
-          <span>Editar perfil</span></a
+          <span>Editar Perfil</span></a
         >
       </li>
 
@@ -96,11 +96,15 @@
                       alt=""
                     />
                   </div>
-                  <div class="h6">joao@gmail.com</div>
-                  <div class="h7 text-muted">Nome: João Pereira</div>
-                  <div class="h7 text-muted">
-                    Reciclador de: Papel, Vidro e Materias organicos.
-                  </div>
+                  <ul>
+                    <li v-for="user in users" :key="user.id">
+                      <div class="h6">{{ user.email }}</div>
+                      <div class="h7 text-muted">{{ user.nome }}</div>
+                      <div class="h7 text-muted">
+                        Reciclador de: Papel, Vidro e Materias organicos.
+                      </div>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -356,7 +360,7 @@
 
 <script>
 export default {
-    name: "User",
+  name: "User",
 };
 </script>
 
